@@ -1,0 +1,40 @@
+﻿@model PizzaStoreMVC.Client.ViewModels.PizzaOrder
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.options.Sauces)
+    @Html.DropDownListFor(m => m.options.Sauces, Model.options.Sauces)
+    @Html.ValidationMessageFor(m => m.options.Sauces)
+
+    @Html.LabelFor(m => m.options.Crusts)
+    @Html.DropDownListFor(m => m.options.Crusts, Model.options.Crusts)
+    @Html.ValidationMessageFor(m => m.options.Crusts)
+
+    @Html.LabelFor(m => m.options.Sizes)
+    @Html.DropDownListFor(m => m.options.Sizes, Model.options.Sizes)
+    @Html.ValidationMessageFor(m => m.options.Sizes)
+
+    <button type="submit">Submit</button>
+}
+
+@Html.Partial("~/Views/Shared/CartView.cshtml", Model.Details)
+
+
+
+
+
+@{
+    foreach (var item in Model.options.Cheeses)
+    {
+        Html.CheckBox(item.Text);
+    }
+ }
+
+
+
+@{
+    foreach (var item in Model.options.Toppings)
+    {
+        Html.CheckBox(item.Text);
+    }
+}
